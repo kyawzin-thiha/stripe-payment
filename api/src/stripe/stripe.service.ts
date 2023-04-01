@@ -72,4 +72,27 @@ export class StripeService {
             return [null, "Error generating payment session"]
         }
     }
+
+    verifyStriptWebhookSignature(body: any, signature: string): [any | null, null | string] {
+        try {
+            const event = this.stripe.webhooks.constructEvent(body, signature, this.configService.get("STRIPE_WEBHOOK_SECRET"))
+
+            return [event, null]
+        } catch (error) {
+            console.log(error)
+            return [null, "Error verifying stripe webhook signature"]
+        }
+    }
+
+    async retrieveSession(sessionId: string): Promise<[any | null, string | null]> {
+        try {
+
+            const session = await this.stripe.checkout.sessions.retrieve(sessionId, { expand: ["line_items"] })
+
+            //session.line_items include all products in the session, if you added metadata to the session, you can retrieve it here
+            return [session, null]
+        } catch (error) {
+            return [null, "Error retrieving session"]
+        }
+    }
 }
