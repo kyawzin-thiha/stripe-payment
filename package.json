@@ -1,0 +1,24 @@
+{
+  "name": "stripe-payment",
+  "version": "1.0.0",
+  "description": "This is starter code for a Stripe payment integration webhooks event to manage payment intent status and order managements",
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "keywords": [
+    "stripe",
+    "payment",
+    "webhooks",
+    "nodejs"
+  ],
+  "author": "Kyaw Zin Thiha",
+  "license": "MIT",
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "prettier": "^2.8.7"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,scss,md}": "prettier --write"
+  }
+}
