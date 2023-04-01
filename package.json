@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "This is starter code for a Stripe payment integration webhooks event to manage payment intent status and order managements",
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "dev:api" : "npm run start:dev --prefix ./api",
+    "dev:client" : "npm run dev --prefix ./client",
+    "dev" : "npm run dev:api & npm run dev:client"
   },
   "keywords": [
     "stripe",
